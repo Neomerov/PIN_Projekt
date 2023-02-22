@@ -1,0 +1,64 @@
+﻿@model IEnumerable<pr_pin.Models.Speaker>
+
+@{
+    ViewData["Title"] = "Index";
+}
+ 
+  
+        <h4 style="align-content:center">Popis predavača</h4>
+
+<p>
+        <a asp-action="Create" class="btn btn-sm btn-primary rounded-0 text-uppercase"> Create new</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Slika)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Spol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tema)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var broj1 = 0;
+        }
+@foreach (var item in Model) {
+            broj1++;
+            <tr>
+            <td>
+                  <img src="~/images/@item.Slika"
+                     class="rounded-circle"
+                     height="80" width="80"
+                     asp-append-version="true" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ime)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Spol)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tema)
+            </td>
+                
+            <td>
+                        <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.SpeakerId">Edit</a> |
+                        <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@item.SpeakerId">Details</a> |
+                        <a asp-action="Delete" class="btn btn-outline-primary" asp-route-id="@item.SpeakerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div><p>Ukupan broj unešenih predavača u sustav iznosi: @broj1</p></div>
+

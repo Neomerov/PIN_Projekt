@@ -1,0 +1,46 @@
+﻿@model pr_pin.Models.Speaker
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Detalji</h4>
+
+<div>
+    <h4>Predavača</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Spol)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Spol)
+        </dd>
+
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tema)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tema)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Slika)
+        </dt>
+        <dd class= "col-sm-10">
+        <img src="~/images/@Model.Slika"
+             class="img-thumbnail"
+             height="220" width="220"
+             asp-append-version="true" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@Model?.SpeakerId">Edit</a> |
+    <a asp-action="Index" class="btn btn-outline-primary">Nazad</a>
+</div>

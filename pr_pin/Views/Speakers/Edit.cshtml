@@ -1,0 +1,67 @@
+﻿@model pr_pin.Models.Speaker
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4 >Editiranje</h4>
+
+<h4>Predavač</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form enctype="multipart/form-data" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SpeakerId" />
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Spol" class="control-label"></label>
+                <input asp-for="Spol" class="form-control" />
+                <span asp-validation-for="Spol" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Tema" class="control-label"></label>
+                <input asp-for="Tema" class="form-control" />
+                <span asp-validation-for="Tema" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slika" class="control-label"></label>
+                <img src="~/images/@Model.Slika"
+                     class= "img-thumbnail"
+                     height="220" width="220"
+                     asp-append-version="true" />
+
+                <div>
+                    <p><input type="file" accept="image/*" name="profilnaSlika" id="customFile" onchange="loadFile(event)" style="display: none;"></p>
+                    <p><label for="customFile" style="cursor: pointer;">Upload Image</label></p>
+                    <p><img id="output" width="200" /></p>
+
+                    <script>
+                        var loadFile = function (event) {
+                            var image = document.getElementById('output');
+                            image.src = URL.createObjectURL(event.target.files[0]);
+                        };
+                    </script>
+                </div>
+                
+                <span asp-validation-for="Slika" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-primary">Nazad</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

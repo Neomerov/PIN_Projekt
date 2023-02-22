@@ -1,0 +1,53 @@
+﻿@model IEnumerable<pr_pin.Models.Predavanja>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4 style="align-content:center">Popis Predavanja </h4>
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-primary rounded-0 text-uppercase">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NaslovTeme)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datumPredavanja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Speaker)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var broj = 0;
+        }
+        @foreach (var item in Model) {
+            broj++;
+            <tr>
+            <td>
+                 @Html.DisplayFor(modelItem => item.NaslovTeme)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumPredavanja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speaker.Ime)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-outline-primary" asp-route-id="@item.PredavanjaId">Edit</a> |
+                    <a asp-action="Details" class="btn btn-outline-primary" asp-route-id="@item.PredavanjaId">Details</a> |
+                    <a asp-action="Delete" class="btn btn-outline-primary" asp-route-id="@item.PredavanjaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div><p>Ukupan broj unesenih predavanja u sustav iznosi: @broj</p></div>
+

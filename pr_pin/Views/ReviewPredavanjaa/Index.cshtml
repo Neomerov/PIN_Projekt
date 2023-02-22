@@ -1,0 +1,48 @@
+﻿@model IEnumerable<pr_pin.Models.ReviewPredavanja>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.profilnaSlika)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NaslovTeme)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.datumPredavanja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@item.profilnaSlika"
+                     class="rounded-circle"
+                     height="130" width="130"
+                     asp-append-version="true" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ime)
+                </td>
+                <td>
+                    <b> @Html.DisplayFor(modelItem => item.NaslovTeme) </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datumPredavanja)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

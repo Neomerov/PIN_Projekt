@@ -1,0 +1,59 @@
+﻿@model pr_pin.Models.Predavanja
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-light text-uppercase text-black">
+           <h4>Dodaj novo predavanje</h4>
+        </div>
+<h4>Predavanja</h4>
+        <div class="card-body">
+
+    <div class="col-md-4">
+        <form asp-action="Create" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="row">
+                        
+                            <div class="form-group">
+                <label asp-for="NaslovTeme" class="control-label"></label>
+                <input asp-for="NaslovTeme" class="form-control" />
+                <span asp-validation-for="NaslovTeme" class="text-danger"></span>
+                        </div>
+                        
+                    
+
+                    
+                        
+                            <div class="form-group">
+                <label asp-for="datumPredavanja" class="control-label"></label>
+                <input asp-for="datumPredavanja" class="form-control" />
+                <span asp-validation-for="datumPredavanja" class="text-danger"></span>
+            </div>
+                       
+                    
+
+
+                   
+                        
+                            <div class="form-group">
+                <label asp-for="SpeakerId" class="control-label"></label>
+                <select asp-for="SpeakerId" class ="form-control" asp-items="ViewBag.SpeakerId"></select>
+                            </div>
+                       
+                    </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-primary">Nazad</a>
+</div>
+</div>
+</div>
